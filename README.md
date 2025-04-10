@@ -1,6 +1,4 @@
-# BulkMail Pro - Professional Bulk Email Sender
-
-![BulkMail Pro Screenshot]
+# BulkMail Website
 
 BulkMail Pro is a web-based application that enables users to send personalized bulk emails efficiently. It features a step-by-step workflow with SMTP configuration, Excel recipient list upload, and a rich text email editor with variable insertion capabilities.
 
