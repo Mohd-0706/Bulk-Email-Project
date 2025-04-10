@@ -1,43 +1,36 @@
-# Bulk Email Sender Website
+# BulkMail Pro - Professional Bulk Email Sender
 
-A colorful, animated web application for sending bulk emails with Excel integration.
+![BulkMail Pro Screenshot]
 
-## Features
-- Drag-and-drop merge tags from Excel headers
-- SMTP email sending with Gmail/Yahoo/Outlook
-- Real-time status notifications
-- Responsive design
-- Secure file uploads
+BulkMail Pro is a web-based application that enables users to send personalized bulk emails efficiently. It features a step-by-step workflow with SMTP configuration, Excel recipient list upload, and a rich text email editor with variable insertion capabilities.
 
-## Requirements
-- Python 3.6+
-- Node.js (for frontend development)
-- Excel file with recipient data
+## Key Features
 
+- **Three-Step Workflow**: Simple SMTP setup, recipient upload, and email composition
+- **Excel Integration**: Upload recipient lists with personalized variables
+- **Rich Text Editor**: Format emails with bold, italic, colors, and more
+- **Variable Insertion**: Drag-and-drop personalized fields from your Excel columns
+- **Progress Tracking**: Real-time sending progress with success/failure logging
+- **Responsive Design**: Works on desktop and mobile devices
 
-2. Run the backend server:
-```bash
-python app.py
-```
+## Technology Stack
 
-3. Open `index.html` in a web browser
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla JS)
+- **Backend**: Python with Flask
+- **Styling**: Custom CSS with Bootstrap 5 components
+- **Icons**: Font Awesome 6
+- **Fonts**: Google Fonts (Roboto & Poppins)
 
-## Usage
-1. Enter your email and app password
-2. Upload an Excel file with recipient data
-3. Compose your message using merge tags
-4. Click "Send Emails"
+## Installation
 
-## SMTP Setup Instructions
-1. **Gmail**:
-   - Enable "Less secure app access" in Google Account settings
-   - Or create an App Password if using 2FA
+### Prerequisites
+- Python 3.7+
+- pip package manager
+- Virtual environment (recommended)
 
-2. **Yahoo/Outlook**:
-   - Use your normal password
-   - May need to enable "Allow less secure apps"
+### Setup Instructions
 
-## Notes
-- The application runs on `http://localhost:5000`
-- Uploaded files are stored in the `uploads` folder
-- Email sending runs in background threads
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/bulkmail-pro.git
+   cd bulkmail-pro
