@@ -28,9 +28,3 @@ BulkMail Pro is a web-based application that enables users to send personalized 
 - pip package manager
 - Virtual environment (recommended)
 
-### Setup Instructions
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/bulkmail-pro.git
-   cd bulkmail-pro
