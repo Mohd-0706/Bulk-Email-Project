@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
 import json
+from email.mime.application import MIMEApplication
 
 app = Flask(__name__)
 SMTP_SERVER = "smtp.gmail.com"
@@ -72,10 +73,7 @@ def send_emails():
         
         excel_file = request.files.get('excel_file')
         if not excel_file:
-            return jsonify({
-                'status': 'error',
-                'message': 'No Excel file provided'
-            })
+            return jsonify({'status': 'error', 'message': 'No Excel file provided'})
         
         df = pd.read_excel(excel_file)
         df = df.dropna(subset=['Email'])
@@ -96,13 +94,27 @@ def send_emails():
                 msg["To"] = str(row["Email"])
                 msg["Subject"] = subject_template
                 
+                # Personalize HTML content
                 personalized_html = html_template
                 for column in df.columns:
                     placeholder = f"{{{column}}}"
-                    personalized_html = personalized_html.replace(
-                        placeholder, str(row[column]))
+                    personalized_html = personalized_html.replace(placeholder, str(row[column]))
                 
                 msg.attach(MIMEText(personalized_html, "html"))
+                
+                # Attach PDF if column exists
+                if 'PDF_Path' in df.columns and pd.notna(row['PDF_Path']):
+                    pdf_path = row['PDF_Path']
+                    if os.path.exists(pdf_path):
+                        with open(pdf_path, "rb") as pdf_file:
+                            pdf_attachment = MIMEApplication(pdf_file.read(), _subtype="pdf")
+                            pdf_attachment.add_header(
+                                'Content-Disposition',
+                                'attachment',
+                                filename=os.path.basename(pdf_path)
+                            )
+                            msg.attach(pdf_attachment)
+                
                 server.sendmail(smtp_email, str(row["Email"]), msg.as_string())
                 sent_count += 1
                 time.sleep(1)  # Rate limiting
@@ -118,10 +130,7 @@ def send_emails():
             'totalCount': total_count
         })
     except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        })
+        return jsonify({'status': 'error', 'message': str(e)})
 
 if __name__ == '__main__':
     app.run(debug=True)
