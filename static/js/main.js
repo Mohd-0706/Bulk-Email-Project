@@ -501,8 +501,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const files = Array.from(event.target.files);
 
         const validFiles = files.filter(file => {
-            if (file.size > 5 * 1024 * 1024) {
-                showToast(`File ${file.name} exceeds 5MB limit and will not be attached`, 'warning');
+            if (file.size > 10 * 1024 * 1024) {
+                showToast(`File ${file.name} exceeds 10MB limit and will not be attached`, 'warning');
                 return false;
             }
             return true;
