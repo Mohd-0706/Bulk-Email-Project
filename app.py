@@ -209,7 +209,7 @@ def send_emails():
                             'Email': row['Email'],
                             'Status': 'Failed',
                             'Error': 'Message exceeded 25MB size limit',
-                            'Timestamp': pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')
+                            'Timestamp': pd.Timestamp.now().strftime('%M:%S')
                         })
                         continue
 
