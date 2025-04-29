@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Constants
     const MAX_ATTACHMENT_SIZE = 25 * 1024 * 1024; // 25MB (Google's limit)
     const MAX_TOTAL_ATTACHMENTS_SIZE = 25 * 1024 * 1024; // 25MB total for all attachments
-    const DELAY_BETWEEN_EMAILS = 500; // 1 second delay between emails
+    const DELAY_BETWEEN_EMAILS = 300; // 1 second delay between emails
     const GOOGLE_SIZE_LIMIT_HELP_URL = 'https://support.google.com/mail/?p=MaxSizeError';
 
     // DOM Elements
